@@ -21,6 +21,20 @@
 	margin-left: auto;
 }
 
+.assignment-menu li:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+.assignment-menu li a{
+	float: right;
+}
+
+.assignment-menu li a:hover{
+	fill: red;
+}
+
 .assignment-menu li:hover {
 	background-color: #ddd;
 

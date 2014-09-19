@@ -19,9 +19,9 @@
                 React.DOM.li({
                   key: this.props.item.id, 
                   onClick: this.handleClick}, 
-                  this.props.item.title
-                ), 
-                React.DOM.a({onClick: this.destroy}, "Delete")
+                  this.props.item.title, 
+                  React.DOM.a({onClick: this.destroy}, React.DOM.img({src: "/ui/icons/delete-icon.svg"}))
+                )
               )
     },
 

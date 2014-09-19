@@ -20,8 +20,8 @@
                   key={this.props.item.id}
                   onClick={this.handleClick} >
                   {this.props.item.title}
+                  <a onClick={this.destroy}><img src="/ui/icons/delete-icon.svg" /></a>
                 </li>
-                <a onClick={this.destroy}>Delete</a>
               </div>
     },
 
