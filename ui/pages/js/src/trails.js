@@ -73,9 +73,11 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
   }
 });
 
+
 // send message to chrome to trigger assignment update
+
 domready(function () {
-  chrome.runtime.sendMessage({ action: 'getAssignments' });
+    chrome.runtime.sendMessage({ action: 'getAssignments' });
 });
 
 
