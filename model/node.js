@@ -29,6 +29,7 @@
     this.title        = properties.title;
     this.tabId        = properties.tabId;
     this.favIconUrl   = properties.favIconUrl;
+    this.tempId       = properties.temp_id || properties.tempId || this.id;
 
     context.Node._instances[this.id] = this;
   };
@@ -42,9 +43,10 @@
   context.Node.prototype.toProps = function() {
     var props = {};
 
-    if (this.parentId) props.parent_id = this.parentId;
-    if (this.url)      props.url = this.url;
-    if (this.title)    props.title = this.title;
+    if (this.parentId) props.parent_id  = this.parentId;
+    if (this.url)      props.url        = this.url;
+    if (this.title)    props.title      = this.title;
+    if (this.tempId)   props.temp_id    = this.tempId;
 
     return props;
   };

@@ -23,6 +23,7 @@
     this.startedAt      = properties.started_at || properties.startedAt;
     this.title          = properties.title || "Untitled " + this.id;
     this.userId         = properties.user_id || properties.userId;
+    this.tempId         = properties.temp_id || properties.tempId || this.id;
 
     context.Assignment._instances[this.id] = this;
   };
@@ -35,8 +36,10 @@
   context.Assignment.prototype.toProps = function() {
     var props = {};
 
-    props.name = "Untitled";
+    props.name        = "Untitled";
     props.description = "Recording from " + new Date().toLocaleString()
+
+    if (this.tempId) props.temp_id = this.tempId;
 
     return props;
   };
