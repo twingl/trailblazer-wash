@@ -93,7 +93,6 @@ html {
 	opacity: 1;
 }
 
-
 .open .node-halo{
 	stroke: #44C0FF;
 	stroke-width: 1px;
@@ -103,7 +102,7 @@ html {
 
 .root .node-halo{
 	fill-opacity: 0.6;
-	fill: #FF9D99;
+	fill: #4B4B4B;
 }
 
 
@@ -206,6 +205,32 @@ html {
 }
 .click-nav .no-js:hover ul {
 	display:block;
+}
+
+.help {
+	position: fixed;
+	right: 30px;
+	bottom: 24px;
+	font-size: 14px;
+}
+
+.help a {
+	opacity: 0.5;
+}
+
+.help a:hover {
+	opacity: 0.6;
+}
+
+.tutorial {
+	padding-left: 1px;
+}
+
+.feedback {
+	position: relative;
+	bottom: 3px;
+	text-decoration: none;
+	color: inherit;
 }
 
 
