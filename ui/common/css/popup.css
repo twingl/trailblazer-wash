@@ -65,6 +65,37 @@ body {
 	background-color: #F7766C;
 }
 
+.start-recording svg{
+	position: relative;
+	top: -2px;
+	right: -2px;
+}
+
+.button.loading {
+	background-color: #F7766C;
+	-webkit-transition: background-color 0.4s ease-in;
+
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.button.loading .plus{
+	-webkit-animation: rotating .5s linear infinite;
+	transform-origin: 50% 50%;
+}
+
+
+.button-stop:hover.loading {
+	background-color: #F7766C;
+}
+
 .folder {
 	display: block;
 	width: 78px;
@@ -72,12 +103,6 @@ body {
 	text-decoration: none;
 	text-align: center;
 	color: #7B7B7B;
-}
-
-.start-recording{
-	background-image:url(/ui/icons/new-icon.svg);
-	background-repeat: no-repeat;
-	background-position:92px 16px;
 }
 
 .folder img {margin-bottom: 8px}

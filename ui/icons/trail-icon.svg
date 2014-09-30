@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="54px" height="11px" viewBox="0 0 54 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.0.4 (8054) - http://www.bohemiancoding.com/sketch -->
-    <title>Trail</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
+<svg width="62px" height="19px" viewBox="0 0 62 19" version="1.1">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Dropdown-Concept" sketch:type="MSLayerGroup" transform="translate(-85.000000, -79.000000)" fill="#FFFFFF">
-            <g id="Button" transform="translate(47.000000, 42.000000)" sketch:type="MSShapeGroup">
-                <g id="Colour-+-Trail" transform="translate(0.000000, 17.000000)">
-                    <path d="M52,23 L52,28 L86,28 L86,23 L52,23 Z M60,23 L60,28 L65,28 L65,23 L60,23 Z M73,23 L73,28 L78,28 L78,23 L73,23 Z M86,31 L86,20 L92,25.5 L86,31 Z M42.5,20 L46.9655762,22.75 L46.9655762,28.25 L42.5,31 L38.0339356,28.25 L38.0339356,22.75 L42.5,20 Z" id="Trail"></path>
-                </g>
-            </g>
+        <g id="record-icon" sketch:type="MSLayerGroup" fill="#FFFFFF">
+            <rect id="Trail" sketch:type="MSShapeGroup" x="40" y="11" width="8" height="5"></rect>
+            <rect id="Trail" sketch:type="MSShapeGroup" x="27" y="11" width="8" height="5"></rect>
+            <rect id="Trail" sketch:type="MSShapeGroup" x="14" y="11" width="8" height="5"></rect>
+            <path d="M48,19 L48,8 L54,13.5 L48,19 Z"></path>
+            <polygon points="4.5 8 8.96557618 10.75 8.96557618 16.25 4.5 19 0.0339355508 16.25 0.0339355508 10.75 "></polygon>
+            <path d="M57,3 L57,0 L59,0 L59,3 L62,3 L62,5 L59,5 L59,8 L57,8 L57,5 L54,5 L54,3 L57,3 Z" class="plus"></path>
         </g>
     </g>
 </svg>
