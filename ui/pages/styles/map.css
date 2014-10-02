@@ -31,11 +31,11 @@ html {
   	width: 100%;
 }
 
-/* tooltip */
+/* tooltip (Needs refactoring) */
 
 .tooltip {
-  padding: 12px;
-  background: #fff;
+  padding: 12px 12px 14px 12px;
+  background-color: #fff;
   color: #333;
   border-radius: 2px;
   max-width: 320px;
@@ -45,10 +45,8 @@ html {
 }
 
 .tooltip-url {
-	color:	#666;
+	color: #666;
 	font-size: 8px;
-	padding-top: 2px;
-
 }
 
 /* Temp !!! */
@@ -113,9 +111,11 @@ html {
 	fill: #4B4B4B;
 }
 
+
 .hub .node-halo{
 	fill-opacity: 0.6;
 }
+
 
 /* links */
 .link {
@@ -129,6 +129,28 @@ html {
 .overlay {
   fill: none;
   pointer-events: all;
+}
+
+/* hubs */
+.hub .node-halo{
+	opacity: 0.6;
+}
+
+.hub-title div {
+	color: #fff;
+	background-color: #616161;
+	background-image: none;
+	border-radius: 2px;
+	font-size: 10px;
+	max-width: 200;
+	text-align: center;
+  	overflow: hidden;
+  pointer-events: none;
+
+}
+
+.hub-title.hide {
+	display: none;
 }
 
 /* dropdown */
