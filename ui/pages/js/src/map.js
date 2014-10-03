@@ -1,5 +1,4 @@
 /** @jsx React.DOM */
-var render = require('app/render');
 var d3ify = require('app/d3ify');
 var React = require('react');
 var _ = require('lodash');
@@ -33,7 +32,8 @@ if (window.location.hash) {
 var getMap =  function(assignmentId) {
   chrome.runtime.sendMessage({ action: "getMap", assignmentId: assignmentId }, function(response) {
       if (response.data && response.data.nodes && Object.keys(response.data.nodes).length > 0) {
-        render("#map", d3ify( response.data ));
+        var name = "map";
+        var data = d3ify(response.data);
 
         React.renderComponent(
           <MapName name={response.data.assignment.title} />,
@@ -41,7 +41,7 @@ var getMap =  function(assignmentId) {
         );
 
         React.renderComponent(
-          <Map id="map" width={960} height={500} />,
+          <Map id={name} width={960} height={500} selector={"#"+name} data={data} />,
           document.getElementById('map-container')
         );
       };
