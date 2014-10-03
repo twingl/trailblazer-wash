@@ -22,6 +22,9 @@ if (window.location.hash) {
   assignmentId = parseInt(o.assignment);
 };
 
+
+
+
 var getMap =  function(assignmentId) {
   chrome.runtime.sendMessage({ action: "getMap", assignmentId: assignmentId }, function(response) {
       if (response.data && response.data.nodes && Object.keys(response.data.nodes).length > 0) {
