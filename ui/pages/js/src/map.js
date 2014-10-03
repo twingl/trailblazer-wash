@@ -41,8 +41,8 @@ var getMap =  function(assignmentId) {
         );
 
         React.renderComponent(
-          <Map width={960} height={500} />,
-          document.getElementById('map')
+          <Map id="map" width={960} height={500} />,
+          document.getElementById('map-container')
         );
       };
     });
