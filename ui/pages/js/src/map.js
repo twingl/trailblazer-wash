@@ -1,21 +1,32 @@
 /** @jsx React.DOM */
+//helpers
 var d3ify = require('app/d3ify');
 var React = require('react');
 var _ = require('lodash');
+var domready = require('domready');
 
 //components
-var Map = require('app/components/map');
+var MapView = require('app/components/map-view');
 
-
+//variables
 var assignmentId;
 var chrome = window.chrome;
 
-//React component. TODO pare these off into their own directory.
-var MapName = React.createClass({
-  render: function () {
-    return <h1>{this.props.name}</h1>
-  }
-});
+var getMap =  function(assignmentId) {
+  chrome.runtime.sendMessage({ action: "getMap", assignmentId: assignmentId }, function(response) {
+      console.log('getmap fired')
+      if (response.data && response.data.nodes && Object.keys(response.data.nodes).length > 0) {
+        console.log('response', response, document.getElementsByTagName('body')[0])
+        var data = d3ify(response.data);
+
+        React.renderComponent(
+          <MapView title={response.data.assignment.title} data={data} />,
+          document.getElementsByTagName('body')[0]
+        );
+
+      };
+    });
+};
 
 if (window.location.hash) {
   var o = {};
@@ -26,32 +37,17 @@ if (window.location.hash) {
   assignmentId = parseInt(o.assignment);
 };
 
-var getMap =  function(assignmentId) {
-  chrome.runtime.sendMessage({ action: "getMap", assignmentId: assignmentId }, function(response) {
-      if (response.data && response.data.nodes && Object.keys(response.data.nodes).length > 0) {
-        var name = "map";
-        var data = d3ify(response.data);
-
-        React.renderComponent(
-          <MapName name={response.data.assignment.title} />,
-          document.getElementById('title')
-        );
-
-        React.renderComponent(
-          <Map id={name} width={960} height={500} selector={"#"+name} data={data} />,
-          document.getElementById('map-container')
-        );
-      };
-    });
-};
-
-//listen for updates to an assignment's nodes and render map
+//listen for updates to an assignment's nodes and render map (unused)
 chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
   if (request.action === "updatedNodes" && request.assignmentId === assignmentId) {
     getMap(assignmentId);
   };
 });
 
-getMap(assignmentId);
+domready(function() {
+  console.log('domready fired')
+  getMap(assignmentId);
+});
+
 
 
