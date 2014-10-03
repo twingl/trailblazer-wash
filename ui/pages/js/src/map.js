@@ -3,6 +3,11 @@ var render = require('app/render');
 var d3ify = require('app/d3ify');
 var React = require('react');
 var _ = require('lodash');
+
+//components
+var Map = require('app/components/map');
+
+
 var assignmentId;
 var chrome = window.chrome;
 
@@ -33,6 +38,11 @@ var getMap =  function(assignmentId) {
         React.renderComponent(
           <MapName name={response.data.assignment.title} />,
           document.getElementById('title')
+        );
+
+        React.renderComponent(
+          <Map width={960} height={500} />,
+          document.getElementById('map')
         );
       };
     });
