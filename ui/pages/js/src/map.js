@@ -44,6 +44,13 @@ chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
   };
 });
 
+chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+  if (request.action === "updatedAssignment" && request.assignment.assignmentId === assignmentId) {
+    getMap(assignmentId);
+  };
+});
+
+
 domready(function() {
   console.log('domready fired')
   getMap(assignmentId);

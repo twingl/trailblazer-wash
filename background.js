@@ -291,7 +291,6 @@
           assignment = _.extend(assignment, request.props);
 
           assignment.save(stateManager._storageAdapter).then(function(savedAssignment) {
-            //unused
             chrome.runtime.sendMessage({action: 'updatedAssignment', assignment: savedAssignment})
           });
         };
