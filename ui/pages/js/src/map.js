@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 //helpers
-var d3ify = require('app/d3ify');
 var React = require('react');
 var _ = require('lodash');
 var domready = require('domready');
@@ -17,7 +16,7 @@ var getMap =  function(assignmentId) {
       console.log('getmap fired')
       if (response.data && response.data.nodes && Object.keys(response.data.nodes).length > 0) {
         console.log('response', response, document.getElementsByTagName('body')[0])
-        var data = d3ify(response.data);
+        var data = response.data;
 
         React.renderComponent(
           <MapView title={response.data.assignment.title} data={data} />,
