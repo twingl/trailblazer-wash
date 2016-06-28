@@ -47,12 +47,14 @@ export default class Sidebar extends React.Component {
             <div className="title-wrap">
                 <span id="title" className="title"></span>
                 <input id="title-input" className="hide" type="text" defaultValue="..." />
-                <span id="edit-title" onClick={this.editTitle} className="btn">edit</span>
+                <span id="edit-title" onClick={this.editTitle} className="btn">
+                    edit <img src="/assets/icons/editable-icon.svg" />
+                </span>
             </div>
             <div className="url"></div>
             <div className="intro"></div>
             <div className="voting">
-                <span className="up">Up</span><span className="neutral">Neutral</span><span className="down">Down</span>
+                <span className="up" onClick={this.upVote}>Up</span><span className="neutral">Neutral</span><span className="down" onClick={this.upVote}>Down</span>
             </div>
         </div>
   }
@@ -70,6 +72,14 @@ export default class Sidebar extends React.Component {
     title.classList.toggle('hide')
     titleInput.classList.toggle('hide')
 
+  }
+
+  upVote(){
+      // API upvote + Get the node and highlight
+  }
+
+  downVote(){
+      // API downvote + Get the node and remove/hide
   }
 
 };
