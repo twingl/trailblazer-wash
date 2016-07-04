@@ -357,7 +357,7 @@ Gradient Combos
 #sidebar .title{margin-right:5px;}
 
 #title-input{
-    display: block;
+    display: inline-block;
     width: 100%;
     margin-bottom: 5px;
     text-decoration: none;
@@ -369,6 +369,3 @@ Gradient Combos
     padding: 8px 12px;
     border: none;
 }
-
-#sidebar .hide{display:none;}
-#sidebar .show{display:inline-block;}
