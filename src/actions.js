@@ -189,6 +189,17 @@ export default {
     });
   },
 
+  updateNodeTitle: function(localId, title) {
+    logger.info('updateNodeTitle', { localId: localId, title: title });
+    messageChannel.send({
+      action: constants.UPDATE_NODE_TITLE,
+      payload: {
+        localId: localId,
+        title: title
+      }
+    });
+  },
+
   destroyNode: function(localId) {
     logger.info('deleteNode');
     chrome.runtime.sendMessage({

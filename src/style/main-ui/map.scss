@@ -356,16 +356,29 @@ Gradient Combos
 }
 #sidebar .title{margin-right:5px;}
 
-#title-input{
-    display: inline-block;
+.sidebar-title {
+    display: block;
     width: 100%;
-    margin-bottom: 5px;
-    text-decoration: none;
-    color: #4D4D4D;
-    background-color: #fff;
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: 400;
-    padding: 8px 12px;
-    border: none;
+	text-decoration: none;
+	color: #4D4D4D;
+	background-color: #fff;
+	border-radius: 2px;
+	font-size: 12px;
+	font-weight: 400;
+	padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.sidebar-title img {
+    float: right;
+	position: relative;
+	top: 1px;
+	right: -6px;
+	padding-right: 4px;
+}
+
+.sidebar-title:focus {
+	border-style: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
