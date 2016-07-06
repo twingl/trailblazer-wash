@@ -4,7 +4,7 @@ import messageChannel  from '../util/message-channel';
 import Actions from '../actions';
 import Constants from '../constants';
 
-export default class Upvote extends React.Component {
+export default class Neutralvote extends React.Component {
 
   constructor(props) {
     super(props);
@@ -30,9 +30,9 @@ export default class Upvote extends React.Component {
   }
 
   render() {
-    var classes = this.state.rank === 1 ? "btn selected" : "btn";
+    var classes = this.state.rank === 0 ? "btn selected" : "btn";
     return  <a onClick={this.onClick.bind(this)}
-              className={classes} >Upvote</a>;
+              className={classes} >Neutral</a>;
   }
 
   onClick() {
@@ -42,7 +42,7 @@ export default class Upvote extends React.Component {
       eventData: { }
     });
 
-    Actions.rankNodeWaypoint(this.props.node.localId);
+    Actions.rankNodeNeutral(this.props.node.localId);
     this.forceUpdate();
   }
 

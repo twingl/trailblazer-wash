@@ -33,20 +33,10 @@ export default class Downvote extends React.Component {
     var width = this.props.width + "px";
     var height= this.props.height + "px";
     var viewBox = "0 0 " + this.props.width  + " " + this.props.height;
-    var waypointClass = this.state.rank === 1 ? "waypoint-active" : "waypoint";
+    var waypointClass = this.state.rank === 1 ? "btn" : "btn";
 
     return  <a onClick={this.onClick.bind(this)}
               className={waypointClass} >Downvote</a>;
-  }
-
-  onDeleteClicked(evt) {
-    this.setState({ deletePending: true });
-    (this.props.onDeletePending || (() => {}))(evt);
-  }
-
-  onConfirmDeleteClicked(evt) {
-    this.setState({ deletePending: false });
-    (this.props.onDeleteConfirmed || (() => {}))(evt);
   }
 
   onClick() {

@@ -26,7 +26,7 @@ export default class SidebarTitle extends React.Component {
           if (message.storeName === "NodeStore" &&
               message.payload.node &&
               message.payload.node.localId === this.props.node.data.localId) {
-            this.setState({ nodeTitle: message.payload.node.data.title });
+            //this.setState({ title: message.payload.node.data.title });
             this.forceUpdate();
           }
       }
