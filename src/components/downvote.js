@@ -50,16 +50,7 @@ export default class Downvote extends React.Component {
   }
 
   onClick() {
-//    messageChannel.send({
-//      action: "trackUIEvent",
-//      eventName: "ui.popup.waypoint.toggle",
-//      eventData: { }
-//    });
-//
-//    Actions.destroyNode(this.props.node.localId);
     Actions.bulkDestroyNodes([this.props.node.localId]);
-//    this.props.actions.bulkDestroyNodes(this.state.nodesPendingDeletion);
-//    Actions.rankNodeDown(this.props.node.localId);
   }
 
 };
