@@ -17,15 +17,18 @@ export default class Sidebar extends React.Component {
   render() {
 
     var classes = 'sidebar';
-    if( this.props.node )
+    var url = '';
+    if( this.props.node ){
         classes = (this.props.visible) ? 'sidebar slidein' : 'sidebar slideout';
+        url = this.props.node.data.url;
+    }
 
     return  <div className={classes} id="sidebar">
                 <div className="close" onClick={this.close}>
                     <span className="btn">close</span>
                 </div>
                 <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
-                <div className="url"></div>
+                <div className="url">{url}</div>
                 <div className="intro"></div>
             </div>
 
