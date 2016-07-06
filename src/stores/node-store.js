@@ -502,6 +502,29 @@ class NodeStore extends Store {
   }
 
   /**
+   * Update a node's rank
+   */
+  @action(constants.RANK_NODE_DOWN)
+  handleRankNodeDown(payload) {
+    logger.info("handleRankNodeDown:", { payload: payload });
+    this.db.nodes.db.transaction("readwrite", ["nodes"], (err, tx) => {
+      var store = tx.objectStore("nodes");
+
+      store.get(payload.localId).onsuccess = (evt) => {
+        var node = evt.target.result;
+
+        if (node) {
+          node.rank = -1;
+          store.put(node).onsuccess = (evt) => {
+            this.emit('change', { node: node });
+            this.flux.actions.updateNodeSuccess(node.localId);
+          };
+        }
+      };
+    });
+  }
+
+  /**
    * Emit a change event containing the data associated with the specified
    * assignment
    */
