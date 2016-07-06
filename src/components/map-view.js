@@ -89,8 +89,6 @@ export default class MapView extends React.Component {
   }
 
   onNodeClicked(node) {
-      console.log('currentNode');
-      console.log(node);
     this.setState({
       currentNode: node,
       sidebarVisible: node.openSidebar
