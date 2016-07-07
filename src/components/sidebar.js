@@ -14,13 +14,16 @@ export default class Sidebar extends React.Component {
     super(props);
   }
 
-  render() {
+  render(){
 
-    var classes = 'sidebar';
-    var url = '';
+    var title   = '';
+    var url     = '';
+    var classes = (this.props.node === null) ? 'sidebar' : 'sidebar slideout';
+
     if( this.props.node ){
-        classes = (this.props.visible) ? 'sidebar slidein' : 'sidebar slideout';
-        url = this.props.node.data.url;
+        title   = this.props.node.props.node.data.title;
+        url     = this.props.node.props.node.data.url;
+        classes = 'sidebar slidein';
     }
 
     return  <div className={classes} id="sidebar">
