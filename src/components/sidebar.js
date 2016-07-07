@@ -17,16 +17,18 @@ export default class Sidebar extends React.Component {
     super(props);
   }
 
-  render() {
+  render(){
 
-    var classes = 'sidebar';
-    var url = '';
+    var title   = '';
+    var url     = '';
+    var classes = (this.props.node === null) ? 'sidebar' : 'sidebar slideout';
 
     if( this.props.node ){
-        classes = (this.props.visible) ? 'sidebar slidein' : 'sidebar slideout';
-        url = this.props.node.data.url;
+        title   = this.props.node.data.title;
+        url     = this.props.node.data.url;
+        classes = 'sidebar slidein';
 
-        return  <div className={classes} id="sidebar">
+    return  <div className={classes} id="sidebar">
                 <div className="close" onClick={this.close}>
                     <span className="btn">close</span>
                 </div>
@@ -39,13 +41,13 @@ export default class Sidebar extends React.Component {
             </div>
     }else{
         return  <div className={classes} id="sidebar">
-                <div className="close" onClick={this.close}>
-                    <span className="btn">close</span>
+                    <div className="close" onClick={this.close}>
+                        <span className="btn">close</span>
+                    </div>
+                    <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
+                    <div className="url">{url}</div>
+                    <div className="intro"></div>
                 </div>
-                <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
-                <div className="url">{url}</div>
-                <div className="intro"></div>
-            </div>
     }
 
   }
