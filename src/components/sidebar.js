@@ -33,9 +33,9 @@ export default class Sidebar extends React.Component {
                 <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
                 <div className="url">{url}</div>
                 <div className="intro"></div>
-                <Upvote node={this.props.node.data} width={16} height={15} />
-                <Neutralvote node={this.props.node.data} width={16} height={15} />
-                <Downvote node={this.props.node.data} width={16} height={15} />
+                <Upvote node={this.props.node.data} />
+                <Neutralvote node={this.props.node.data} />
+                <Downvote node={this.props.node.data} />
             </div>
     }else{
         return  <div className={classes} id="sidebar">

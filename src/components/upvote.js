@@ -43,7 +43,6 @@ export default class Upvote extends React.Component {
     });
 
     Actions.rankNodeWaypoint(this.props.node.localId);
-    this.forceUpdate();
   }
 
 };

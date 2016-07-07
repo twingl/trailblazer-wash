@@ -43,7 +43,6 @@ export default class Neutralvote extends React.Component {
     });
 
     Actions.rankNodeNeutral(this.props.node.localId);
-    this.forceUpdate();
   }
 
 };
