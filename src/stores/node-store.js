@@ -136,6 +136,7 @@ class NodeStore extends Store {
         store.put(node).onsuccess = (evt) => {
           oncomplete.push(() => {
             this.flux.actions.updateNodeSuccess(node.localId);
+            this.emit('change', payload);
           });
         };
       };

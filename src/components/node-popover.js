@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classnames from 'classnames';
+import Constants from '../constants';
 
 export default class NodePopover extends React.Component {
 
@@ -14,6 +15,26 @@ export default class NodePopover extends React.Component {
     this.position = props.position;
     this.mouseInBounds;
     this.mouseInParentBounds;
+  }
+
+  // On component mount, register an event listener and callback
+  componentDidMount() {
+    chrome.runtime.onMessage.addListener((message) => {
+
+        //console.log(Constants.SET_NODE_TITLE + " = " + message.action);
+
+        console.log(message);
+
+      switch (message.action) {
+        case Constants.SET_NODE_TITLE:
+          if (message.payload.title) {
+            this.setState({ title: message.payload.title });
+            //this.forceUpdate();
+              console.log(message.payload.title);
+          }
+      }
+
+    });
   }
 
   // We want to set the dom attributes ourselves to avoid triggering React's
