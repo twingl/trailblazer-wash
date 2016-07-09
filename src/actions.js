@@ -449,6 +449,16 @@ export default {
     });
   },
 
+  rankNodeDown: function(localId) {
+    logger.info('rankNodeDown');
+    messageChannel.send({
+      action: constants.RANK_NODE_DOWN,
+      payload: {
+        localId: localId
+      }
+    });
+  },
+
   makeAssignmentVisible: function(localId) {
     logger.info('makeAssignmentVisible');
     messageChannel.send({
