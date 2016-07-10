@@ -30,7 +30,7 @@ export default class Upvote extends React.Component {
   }
 
   render() {
-    var classes = this.state.rank === 1 ? "btn selected" : "btn";
+    var classes = this.state.rank === 1 ? "upvote button selected" : "upvote button";
     return  <a onClick={this.onClick.bind(this)}
               className={classes} >Upvote</a>;
   }

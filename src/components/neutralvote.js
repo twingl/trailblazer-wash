@@ -30,7 +30,7 @@ export default class Neutralvote extends React.Component {
   }
 
   render() {
-    var classes = this.state.rank === 0 ? "btn selected" : "btn";
+    var classes = this.state.rank === 0 ? "neutral button selected" : "neutral button";
     return  <a onClick={this.onClick.bind(this)}
               className={classes} >Neutral</a>;
   }
