@@ -71,7 +71,7 @@ export default class MapView extends React.Component {
                   actions={this.props.actions}
                   togglePopover={this.togglePopover.bind(this)} />
               </span>
-              <Sidebar node={this.state.currentNode} />
+              <Sidebar node={this.state.currentNode} nodes={this.props.nodes} />
             </div>;
   }
 
