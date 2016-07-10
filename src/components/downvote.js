@@ -19,8 +19,7 @@ export default class Downvote extends React.Component {
     messageChannel.listen( function (message) {
       switch (message.action) {
         case Constants.__change__:
-          if (message.payload.store === "NodeStore" &&
-              message.payload.node.localId === this.props.node.localId) {
+          if (message.payload.store === "NodeStore" && message.payload.node.localId === this.props.node.localId) {
             this.props.node.rank = message.payload.node.rank;
             this.setState({ rank: message.payload.node.rank });
           }
@@ -40,7 +39,19 @@ export default class Downvote extends React.Component {
   }
 
   onClick() {
-    Actions.bulkDestroyNodes([this.props.node.localId]);
+
+    this.props.nodes.forEach(function(n, ni){
+        // The downvoted node has a child?
+        if( n.parentId == this.props.node.id ){
+            // Set the child with the deleted node parentID
+            Actions.updateNodeParentId(n.localId, this.props.node.parentId, this.props.node.localParentId);
+        }
+
+        if( ni == this.props.nodes.length-1 )
+            Actions.rankNodeDown(this.props.node.localId);
+
+    }, this)
+
   }
 
 };
