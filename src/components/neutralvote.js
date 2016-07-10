@@ -22,7 +22,7 @@ export default class Neutralvote extends React.Component {
           if (message.payload.store === "NodeStore" &&
               message.payload.node.localId === this.props.node.localId) {
             this.props.node.rank = message.payload.node.rank;
-            this.setState({ rank: message.payload.node.rank });
+            //this.setState({ rank: message.payload.node.rank });
           }
           break;
       }

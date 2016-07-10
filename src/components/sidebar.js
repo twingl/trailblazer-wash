@@ -69,7 +69,9 @@ export default class Sidebar extends React.Component {
   }
 
   onDownVote(){
-      //this.setState({node: false});
+      this.props.onDownVote();
+//      this.props.node = false;
+//      this.setState({node: false});
   }
 
 };

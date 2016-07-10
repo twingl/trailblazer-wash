@@ -71,7 +71,7 @@ export default class MapView extends React.Component {
                   actions={this.props.actions}
                   togglePopover={this.togglePopover.bind(this)} />
               </span>
-              <Sidebar node={this.state.currentNode} nodes={this.props.nodes} />
+              <Sidebar node={this.state.currentNode} nodes={this.props.nodes} onDownVote={this.onDownVote.bind(this)} />
             </div>;
   }
 
@@ -92,6 +92,10 @@ export default class MapView extends React.Component {
     this.setState({
       currentNode: (this.state.currentNode == node) ? false : node
     });
+  }
+
+  onDownVote(){
+      this.setState({ currentNode: false });
   }
 
 };
