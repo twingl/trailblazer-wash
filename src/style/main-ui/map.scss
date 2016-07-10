@@ -298,7 +298,7 @@ Gradient Combos
     top: 0;
     width: 300px;
     height: 100vh;
-    padding: 20px;
+    padding: 15px;
     transform: translateX(100%);
     color: #FFF;
     background: rgba(0,0,0,.7);
@@ -382,3 +382,16 @@ Gradient Combos
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 }
+
+#sidebar .button {
+    display: inline-block;
+    width: 83px;
+    margin: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    opacity: 0.5;
+}
+#sidebar .button.selected{ opacity: 1; }
+#sidebar .button.upvote{ margin-right: 10px;}
+#sidebar .button.downvote{ margin-left: 10px;}

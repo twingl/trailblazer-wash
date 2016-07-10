@@ -32,7 +32,7 @@ export default class Downvote extends React.Component {
     var width = this.props.width + "px";
     var height= this.props.height + "px";
     var viewBox = "0 0 " + this.props.width  + " " + this.props.height;
-    var waypointClass = this.state.rank === 1 ? "downvote button selected" : "downvote button";
+    var waypointClass = this.state.rank === -1 ? "downvote button button-danger selected" : "downvote button button-danger";
 
     return  <a onClick={this.onClick.bind(this)}
               className={waypointClass} >Downvote</a>;
