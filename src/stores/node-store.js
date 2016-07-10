@@ -40,12 +40,16 @@ class NodeStore extends Store {
   @query
   async getNodesByRemoteAssignmentId(assignmentId) {
     var nodes = await this.db.nodes.index('assignmentId').get(assignmentId);
+    // Only return the ranked > -1, let's find how to do this from indexedDB
+    nodes = nodes.filter(function(n){ return n.rank > -1 });
     return nodes;
   }
 
   @query
   async getNodesByLocalAssignmentId(localAssignmentId) {
     var nodes = await this.db.nodes.index('localAssignmentId').get(localAssignmentId);
+    // Only return the ranked > -1, let's find how to do this from indexedDB
+    nodes = nodes.filter(function(n){ return n.rank > -1 });
     return nodes;
   }
 
@@ -147,6 +151,41 @@ class NodeStore extends Store {
 
     });
   }
+
+
+  @action(constants.UPDATE_NODE_PARENT_ID)
+  handleSetNodeParentId(payload) {
+    logger.info('handleUpdateNodeParentId');
+
+    this.db.nodes.db.transaction("readwrite", ["nodes"], (err, tx) => {
+      var store = tx.objectStore("nodes")
+        , oncomplete = [];
+
+      store.get(payload.localId).onsuccess = (evt) => {
+        var node = evt.target.result;
+
+          console.log('to be updated');
+          console.log( node );
+
+        node.parentId = payload.parentId;
+        node.localParentId = payload.localParentId;
+
+        store.put(node).onsuccess = (evt) => {
+          oncomplete.push(() => {
+            this.flux.actions.updateNodeSuccess(node.localId);
+            this.emit('change', {node: node});
+              console.log('updated node parentId');
+          });
+        };
+      };
+
+      tx.oncomplete = () => {
+        _.each(oncomplete, cb => cb());
+      };
+
+    });
+  }
+
 
   /**
    * Create a record for a newly created tab
@@ -521,6 +560,7 @@ class NodeStore extends Store {
             this.flux.actions.updateNodeSuccess(node.localId);
           };
         }
+
       };
     });
   }

@@ -200,6 +200,18 @@ export default {
     });
   },
 
+  updateNodeParentId: function(localId, newParentId, newLocalParentId) {
+    logger.info('updateNodeParentId');
+    chrome.runtime.sendMessage({
+      action: constants.UPDATE_NODE_PARENT_ID,
+      payload: {
+        localId: localId,
+        parentId: newParentId,
+        localParentId: newLocalParentId
+      }
+    });
+  },
+
   destroyNode: function(localId) {
     logger.info('deleteNode');
     chrome.runtime.sendMessage({

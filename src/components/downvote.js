@@ -33,14 +33,28 @@ export default class Downvote extends React.Component {
     var width = this.props.width + "px";
     var height= this.props.height + "px";
     var viewBox = "0 0 " + this.props.width  + " " + this.props.height;
-    var waypointClass = this.state.rank === 1 ? "btn" : "btn";
+    var waypointClass = this.state.rank === -1 ? "downvote button button-danger selected" : "downvote button button-danger";
 
     return  <a onClick={this.onClick.bind(this)}
               className={waypointClass} >Downvote</a>;
   }
 
   onClick() {
-    Actions.bulkDestroyNodes([this.props.node.localId]);
+
+    this.props.nodes.forEach(function(n, ni){
+        // The downvoted node has a child?
+        if( n.parentId == this.props.node.id ){
+            // Set the child with the deleted node parentID
+            Actions.updateNodeParentId(n.localId, this.props.node.parentId, this.props.node.localParentId);
+        }
+
+        if( ni == this.props.nodes.length-1 )
+            Actions.rankNodeDown(this.props.node.localId);
+
+    }, this)
+
+    this.props.onDownVote();
+
   }
 
 };

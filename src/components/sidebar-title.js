@@ -10,12 +10,14 @@ export default class SidebarTitle extends React.Component {
 
     this.state = {
       editable: false,
-      title: false
+      title: this.props.node.data.title
     };
   }
 
   componentWillReceiveProps(nexProps){
-      this.state = {title: (nexProps.node) ? nexProps.node.data.title : 'No title'};
+      this.setState({
+          title: (nexProps.node) ? nexProps.node.data.title : 'No title'
+      });
   }
 
   componentDidMount() {
