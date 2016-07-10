@@ -16,9 +16,6 @@ export default class Sidebar extends React.Component {
   constructor(props) {
     super(props);
 
-      console.log('node from sidebar');
-      console.log(this.props.node);
-
     this.state = {
       node: this.props.node
     };
@@ -49,14 +46,13 @@ export default class Sidebar extends React.Component {
                     <div className="intro"></div>
                     <Upvote node={this.state.node.data} />
                     <Neutralvote node={this.state.node.data} />
-                    <Downvote node={this.state.node.data} nodes={this.props.nodes} />
+                    <Downvote node={this.state.node.data} nodes={this.props.nodes} onDownVote={this.onDownVote.bind(this)} />
                 </div>
     }else{
         return  <div className={classes} id="sidebar">
                     <div className="close" onClick={this.close}>
                         <span className="btn">close</span>
                     </div>
-                    <SidebarTitle node={this.state.node} actions={this.props.actions} constants={Constants} />
                     <div className="url">{url}</div>
                     <div className="intro"></div>
                 </div>
@@ -68,6 +64,10 @@ export default class Sidebar extends React.Component {
     var sidebar = document.getElementById('sidebar')
     sidebar.classList.remove('slidein')
     sidebar.classList.add('slideout')
+  }
+
+  onDownVote(){
+      //this.setState({node: false});
   }
 
 };

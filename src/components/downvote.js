@@ -52,6 +52,8 @@ export default class Downvote extends React.Component {
 
     }, this)
 
+    this.props.onDownVote();
+
   }
 
 };
