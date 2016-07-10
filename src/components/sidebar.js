@@ -33,8 +33,6 @@ export default class Sidebar extends React.Component {
 
     if( this.state.node ){
 
-        console.log(this.state.node);
-
         title   = this.state.node.data.title;
         url     = this.state.node.data.url;
         classes = 'sidebar slidein';
