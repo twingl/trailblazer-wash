@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classnames from 'classnames';
+import Constants from '../constants';
 
 export default class NodePopover extends React.Component {
 
@@ -8,12 +9,25 @@ export default class NodePopover extends React.Component {
     super(props);
 
     this.state = {
-      visible: false
+      visible: false,
+      title: this.props.node.title || '<i>No title</i>'
     };
 
     this.position = props.position;
     this.mouseInBounds;
     this.mouseInParentBounds;
+  }
+
+  // On component mount, register an event listener and callback
+  componentDidMount() {
+    chrome.runtime.onMessage.addListener((message) => {
+      switch (message.action) {
+        case Constants.SET_NODE_TITLE:
+          if (message.payload.title && message.payload.localId == this.props.node.localId) {
+            this.setState({ title: message.payload.title });
+          }
+      }
+    });
   }
 
   // We want to set the dom attributes ourselves to avoid triggering React's
@@ -76,7 +90,7 @@ export default class NodePopover extends React.Component {
   render() {
     let content;
     let actions;
-    let title = this.props.node.title || <i>No title</i>;
+    let title = this.state.title;
 
     if (this.state.deletePending) {
       actions = [
