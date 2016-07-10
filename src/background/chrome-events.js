@@ -5,7 +5,9 @@ import Logger from '../util/logger';
 var logger = Logger('background/chrome-events.js');
 
 export default function bind(flux) {
+
   chrome.tabs.onCreated.addListener(function(tab) {
+      console.log('creating tab.. chrome event...');
     actions.tabCreated(tab.id, tab.url, tab.title, tab.openerTabId, tab);
   });
 
