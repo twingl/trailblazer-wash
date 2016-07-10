@@ -10,7 +10,7 @@ export default class NodePopover extends React.Component {
 
     this.state = {
       visible: false,
-      title: this.props.node.title || '<i>No title</i>'
+      title: this.props.node.title || <i>No title</i>
     };
 
     this.position = props.position;
