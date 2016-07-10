@@ -14,7 +14,7 @@ export default class SidebarTitle extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nexProps){
+  componentWillReceiveProps(nexProps){;
       this.setState({
           title: (nexProps.node) ? nexProps.node.data.title : 'No title'
       });
@@ -27,10 +27,9 @@ export default class SidebarTitle extends React.Component {
           if (message.storeName === "NodeStore" && this.props.node && message.payload.localId === this.props.node.data.localId) {
               console.log('setting the updated title ' + message.payload.title);
             this.setState({
-                editable: false,
                 title: message.payload.title
             });
-            this.forceUpdate();
+            //this.forceUpdate();
           }
       }
     });
@@ -38,6 +37,9 @@ export default class SidebarTitle extends React.Component {
 
   render() {
     var editable = this.state.editable;
+
+      console.log('renering sidebar-title');
+      console.log( this.state );
 
     if (editable) {
       return <div className="title-wrap">

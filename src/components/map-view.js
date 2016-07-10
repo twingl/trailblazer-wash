@@ -26,6 +26,24 @@ export default class MapView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    chrome.runtime.onMessage.addListener((message) => {
+      switch (message.action) {
+        case Constants.__change__:
+            if (message.storeName === "NodeStore") {
+                  console.log(message);
+            }
+//          if (message.storeName === "NodeStore" && this.state.currentNode && message.payload.localId === this.state.currentNode.localId) {
+//              console.log('setting the updated title ' + message.payload.title);
+//            this.setState({
+//                currentNode: message.payload.title
+//            });
+//            //this.forceUpdate();
+//          }
+      }
+    });
+  }
+
   render() {
     var nodeObj = {};
     this.props.nodes.map(node => nodeObj[node.localId] = node);
