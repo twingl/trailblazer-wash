@@ -15,36 +15,48 @@ export default class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
+
+      console.log('node from sidebar');
+      console.log(this.props.node);
+
+    this.state = {
+      node: this.props.node
+    };
+  }
+
+  componentWillReceiveProps(nexProps){
+      this.state = {node: nexProps.node};
   }
 
   render(){
 
     var title   = '';
     var url     = '';
-    var classes = (this.props.node === null) ? 'sidebar' : 'sidebar slideout';
+    var classes = (this.state.node === null) ? 'sidebar' : 'sidebar slideout';
 
-    if( this.props.node ){
-        title   = this.props.node.data.title;
-        url     = this.props.node.data.url;
+    if( this.state.node ){
+
+        title   = this.state.node.data.title;
+        url     = this.state.node.data.url;
         classes = 'sidebar slidein';
 
-    return  <div className={classes} id="sidebar">
-                <div className="close" onClick={this.close}>
-                    <span className="btn">close</span>
+        return  <div className={classes} id="sidebar">
+                    <div className="close" onClick={this.close}>
+                        <span className="btn">close</span>
+                    </div>
+                    <SidebarTitle node={this.state.node} actions={this.props.actions} constants={Constants} />
+                    <div className="url">{url}</div>
+                    <div className="intro"></div>
+                    <Upvote node={this.state.node.data} />
+                    <Neutralvote node={this.state.node.data} />
+                    <Downvote node={this.state.node.data} nodes={this.props.nodes} />
                 </div>
-                <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
-                <div className="url">{url}</div>
-                <div className="intro"></div>
-                <Upvote node={this.props.node.data} />
-                <Neutralvote node={this.props.node.data} />
-                <Downvote node={this.props.node.data} />
-            </div>
     }else{
         return  <div className={classes} id="sidebar">
                     <div className="close" onClick={this.close}>
                         <span className="btn">close</span>
                     </div>
-                    <SidebarTitle node={this.props.node} actions={this.props.actions} constants={Constants} />
+                    <SidebarTitle node={this.state.node} actions={this.props.actions} constants={Constants} />
                     <div className="url">{url}</div>
                     <div className="intro"></div>
                 </div>
