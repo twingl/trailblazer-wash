@@ -15,18 +15,19 @@ export default class SidebarTitle extends React.Component {
   }
 
   componentWillReceiveProps(nexProps){
-      this.state = {title: (nexProps.node) ? nexProps.node.data.title : ''};
+      this.state = {title: (nexProps.node) ? nexProps.node.data.title : 'No title'};
   }
 
   componentDidMount() {
     chrome.runtime.onMessage.addListener((message) => {
-
       switch (message.action) {
         case Constants.__change__:
-          if (message.storeName === "NodeStore" &&
-              message.payload.node &&
-              message.payload.node.localId === this.props.node.data.localId) {
-            //this.setState({ title: message.payload.node.data.title });
+          if (message.storeName === "NodeStore" && this.props.node && message.payload.localId === this.props.node.data.localId) {
+              console.log('setting the updated title ' + message.payload.title);
+            this.setState({
+                editable: false,
+                title: message.payload.title
+            });
             this.forceUpdate();
           }
       }
@@ -74,19 +75,22 @@ export default class SidebarTitle extends React.Component {
   onKeyPress(evt) {
     if (evt.key === 'Enter') this.onBlur();
     if (evt.key === 'Escape') {
-      this.setState({title: this.props.node.data.title});
-      this.setState({editable: false});
+      this.setState({title: this.props.node.data.title, editable: false});
       this.onBlur();
     }
   }
 
   onChange(evt) {
-    this.setState({title: evt.target.value});
+    this.state.title = evt.target.value;
   }
 
   onBlur(evt) {
-    this.setState({editable: false});
-    if (this.state.title != this.props.node.title) {
+    this.setState({
+        editable: false
+    });
+    console.log(this.state.title + ' == ' + this.props.node.data.title );
+
+    if (this.state.title != this.props.node.data.title) {
       Actions.setNodeTitle(this.props.node.data.localId, this.state.title);
     };
   }

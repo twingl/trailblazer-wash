@@ -19,7 +19,7 @@ export default class Downvote extends React.Component {
     messageChannel.listen( function (message) {
       switch (message.action) {
         case Constants.__change__:
-          if (message.payload.store === "NodeStore" &&
+          if (message.payload.store === "NodeStore"  && message.payload.node &&
               message.payload.node.localId === this.props.node.localId) {
             this.props.node.rank = message.payload.node.rank;
             this.setState({ rank: message.payload.node.rank });
