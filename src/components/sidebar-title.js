@@ -14,32 +14,15 @@ export default class SidebarTitle extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nexProps){;
+  componentWillReceiveProps(nexProps){
       this.setState({
           title: (nexProps.node) ? nexProps.node.data.title : 'No title'
       });
-  }
-
-  componentDidMount() {
-    chrome.runtime.onMessage.addListener((message) => {
-      switch (message.action) {
-        case Constants.__change__:
-          if (message.storeName === "NodeStore" && this.props.node && message.payload.localId === this.props.node.data.localId) {
-              console.log('setting the updated title ' + message.payload.title);
-            this.setState({
-                title: message.payload.title
-            });
-            //this.forceUpdate();
-          }
-      }
-    });
+      this.forceUpdate();
   }
 
   render() {
     var editable = this.state.editable;
-
-      console.log('renering sidebar-title');
-      console.log( this.state );
 
     if (editable) {
       return <div className="title-wrap">
@@ -89,11 +72,7 @@ export default class SidebarTitle extends React.Component {
   }
 
   onBlur(evt) {
-    this.setState({
-        editable: false
-    });
-    console.log(this.state.title + ' == ' + this.props.node.data.title );
-
+    this.setState({ editable: false });
     if (this.state.title != this.props.node.data.title) {
       Actions.setNodeTitle(this.props.node.data.localId, this.state.title);
     };
