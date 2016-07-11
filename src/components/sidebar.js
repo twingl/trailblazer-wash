@@ -21,24 +21,8 @@ export default class Sidebar extends React.Component {
     };
   }
 
-//  componentDidMount() {
-//    chrome.runtime.onMessage.addListener((message) => {
-//      switch (message.action) {
-//        case Constants.__change__:
-//          if (message.storeName === "NodeStore" && this.props.node && message.payload.localId === this.props.node.data.localId) {
-//              console.log('setting the updated title ' + message.payload.title);
-//            this.setState({
-//                title: message.payload.title
-//            });
-//            //this.forceUpdate();
-//          }
-//      }
-//    });
-//  }
-
   componentWillReceiveProps(nexProps){
       this.state = {node: nexProps.node};
-      console.log( this.state.node );
   }
 
   render(){
@@ -84,8 +68,6 @@ export default class Sidebar extends React.Component {
 
   onDownVote(){
       this.props.onDownVote();
-//      this.props.node = false;
-//      this.setState({node: false});
   }
 
 };
