@@ -53,10 +53,6 @@ class Recording extends React.Component {
           <VoteMinDown node={this.props.node} />
       </div>
 
-      <div id="waypoint-div" title="Waypoint this page" >
-        <Star node={this.props.node} width={16} height={15} />
-      </div>
-
       <a className="sign-out"
           title="Sign Out"
           onClick={this.onSignOutClicked.bind(this)}>
