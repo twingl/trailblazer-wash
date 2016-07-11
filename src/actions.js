@@ -462,11 +462,25 @@ export default {
   },
 
   rankNodeDown: function(localId) {
-    logger.info('rankNodeDown');
+    logger.info('rankNodeDown ' + localId);
     messageChannel.send({
       action: constants.RANK_NODE_DOWN,
       payload: {
         localId: localId
+      }
+    });
+  },
+
+
+  rankNodeDownPopUp: function(id, localId, parentId, localParentId) {
+    logger.info('rankNodeDownPopUp');
+    messageChannel.send({
+      action: constants.RANK_NODE_DOWN_POPUP,
+      payload: {
+        id: id,
+        localId: localId,
+        parentId: parentId,
+        localParentId: localParentId
       }
     });
   },

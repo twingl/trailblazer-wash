@@ -2,6 +2,9 @@ import React from 'react';
 
 import Constants from '../../../constants';
 import Star from '../../star';
+import VoteMinUp from '../../vote-min-up';
+import Neutralvote from '../../neutralvote';
+import VoteMinDown from '../../vote-min-down';
 import AssignmentTitle from '../../assignment-title';
 
 class Recording extends React.Component {
@@ -43,6 +46,11 @@ class Recording extends React.Component {
           onClick={this.onStopRecordingClicked.bind(this)}>
         <img src="/assets/icons/stop-icon.svg" />
       </a>
+
+      <div className="voting-buttons">
+          <VoteMinUp node={this.props.node} />
+          <VoteMinDown node={this.props.node} />
+      </div>
 
       <div id="waypoint-div" title="Waypoint this page" >
         <Star node={this.props.node} width={16} height={15} />

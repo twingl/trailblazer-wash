@@ -164,9 +164,6 @@ class NodeStore extends Store {
       store.get(payload.localId).onsuccess = (evt) => {
         var node = evt.target.result;
 
-          console.log('to be updated');
-          console.log( node );
-
         node.parentId = payload.parentId;
         node.localParentId = payload.localParentId;
 
@@ -174,7 +171,6 @@ class NodeStore extends Store {
           oncomplete.push(() => {
             this.flux.actions.updateNodeSuccess(node.localId);
             this.emit('change', {node: node});
-              console.log('updated node parentId');
           });
         };
       };

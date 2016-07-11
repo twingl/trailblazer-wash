@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash';
 
+import Actions from '../actions';
 import Constants from '../constants';
 
 //components
@@ -29,10 +30,25 @@ export default class MapView extends React.Component {
   componentDidMount() {
     chrome.runtime.onMessage.addListener((message) => {
       switch (message.action) {
-        case Constants.SET_NODE_TITLE:
-          if (message.payload.title && message.payload.localId == this.state.currentNode.data.localId) {
-            this.state.currentNode.data.title = message.payload.title
-          }
+        case Constants.RANK_NODE_DOWN_POPUP:
+
+              if( message.payload.id && message.payload.parentId && message.payload.localParentId ){
+                  console.log( message );
+                  this.props.nodes.forEach(function(n, ni){
+
+                      console.log(n.parentId + '==' + message.payload.id);
+
+                        // The downvoted node has a child? Set the child with the deleted node parentID
+                        if( n.parentId == message.payload.id )
+                            Actions.updateNodeParentId(n.localId, message.payload.parentId, message.payload.localParentId);
+
+                        if( ni == this.props.nodes.length-1 )
+                            Actions.rankNodeDown(message.payload.localId);
+
+                  }, this)
+              }
+
+        break;
       }
     });
   }
