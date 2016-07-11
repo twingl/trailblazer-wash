@@ -3,7 +3,7 @@ import React from 'react';
 import Constants from '../../../constants';
 import Star from '../../star';
 import VoteMinUp from '../../vote-min-up';
-import Neutralvote from '../../neutralvote';
+import VoteMinNeutral from '../../vote-min-neutral';
 import VoteMinDown from '../../vote-min-down';
 import AssignmentTitle from '../../assignment-title';
 
@@ -49,6 +49,7 @@ class Recording extends React.Component {
 
       <div className="voting-buttons">
           <VoteMinUp node={this.props.node} />
+          <VoteMinNeutral node={this.props.node} />
           <VoteMinDown node={this.props.node} />
       </div>
 

@@ -114,16 +114,15 @@ a {
 }
 .voting-buttons .button {
     display: inline-block;
-    width: 54px;
+    width: 30px;
     margin: 0;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 8px;
     text-align: center;
-    opacity: 0.5;
 }
-.voting-buttons .button.selected{ opacity: 1; }
-.voting-buttons .button.upvote{ margin-right: 10px;}
-.voting-buttons .button.downvote{ margin-left: 10px;}
+.voting-buttons .button.selected{ opacity: .3; }
+.voting-buttons .button.upvote{ margin-right: 10px; background: #4DB6AC;}
+.voting-buttons .button.neutral{ background: #78909C;}
+.voting-buttons .button.downvote{ margin-left: 10px; background: #F44336;}
 
 
 
